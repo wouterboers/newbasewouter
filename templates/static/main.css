@@ -1,0 +1,51 @@
+header {
+    background-color: #dddddd;
+    text-align: center;
+    vertical-align: middle;
+    height: 15%;
+    line-height: 110px;
+    color: #ffffff;
+    font-family: helvetica neue;
+}
+
+nav {
+    width: 15%;
+    height: 80%;
+    background-color: #eeeeee;
+    float: left;
+    font-family: helvetica neue;
+}
+
+section {
+    width: 85%;
+    height: 80%;
+    max-height: 80%;
+    overflow: auto;
+    background-color: #ffffff;
+    float: left;
+    font-family: helvetica neue;
+}
+
+footer {
+    background-color: #dddddd;
+    text-align: center;
+    height: 5%;
+    line-height: 40px;
+    clear: both;
+    color: #ffffff;
+    font-family: helvetica neue;
+}
+
+.block {
+    float: left;
+    margin: 5px;
+    padding: 15px;
+    width: 300px;
+    height: 300px;
+    border: 1px solid black;
+    font-family: helvetica neue;
+}
+
+.wrapper {
+    padding: 10px;
+}

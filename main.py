@@ -110,24 +110,24 @@ class Projects(webapp2.RequestHandler):
         else:
             self.response.write(response)
 
+
     def get(self, id):
         logging.info('Deleting project id' + str(id))
 
 
 class Index(webapp2.RequestHandler):
     def get(self):
-
         names = {
-                    'header': 'Header Text Dictionary'
+            'header': 'Header Text Dictionary'
         }
         template_values = {
-                            'header': names,
-                            'menu1': 'menu item 1',
-                            'menu2': 'menu item 2',
-                            'dashboard_header_1': 'Dashboard 1',
-                            'dashboard_header_2': 'Dashboard 2',
-                            'dashboard_header_3': 'Dashboard 3',
-                            'section_header': 'this is the section header'
+            'header': names,
+            'menu1': 'menu item 1',
+            'menu2': 'menu item 2',
+            'dashboard_header_1': 'Dashboard 1',
+            'dashboard_header_2': 'Dashboard 2',
+            'dashboard_header_3': 'Dashboard 3',
+            'section_header': 'this is the section header'
         }
 
         template = JINJA_ENVIRONMENT.get_template('index.html')
@@ -137,5 +137,5 @@ class Index(webapp2.RequestHandler):
 app = webapp2.WSGIApplication([
                                   ('/', Index),
                                   ('/main', MainHandler),
-                                  ('/projects/(\d+)', Projects)
+                                  ('/newbase/(\d+)', Projects)
                               ], debug=True)
