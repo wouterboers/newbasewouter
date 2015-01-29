@@ -8,12 +8,15 @@ header {
     font-family: helvetica neue;
 }
 
-nav {
-    width: 15%;
-    height: 80%;
-    background-color: #eeeeee;
-    float: left;
-    font-family: helvetica neue;
+#left_menu {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 300px;
+    margin: 0px;
+    z-index: 1;
 }
 
 section {
@@ -48,4 +51,47 @@ footer {
 
 .wrapper {
     padding: 10px;
+}
+
+.popup{
+    display: none;
+    position: fixed;
+    width: 50%;
+    left: 25%;
+    top: 50%;
+    z-index: 100;
+}
+
+.row_icon{
+    font-size: 20px;
+    color: #cccccc;
+}
+
+.row_icon_edit{
+    font-size: 20px;
+    color: #004d40;
+}
+
+.menu_icon{
+    font-size: 30px;
+    position: absolute;
+    right: 10px;
+    top: 1px;
+
+}.menu_icon_hidden{
+    font-size: 30px;
+    position: absolute;
+    left: 10px;
+    top: 1px;
+
+}
+
+.ng_view_content{
+    position: fixed;
+    left: 300px;
+    top: 0px;
+    bottom: 0px;
+    right: 0px;
+    z-index: 2;
+    overflow: auto;
 }

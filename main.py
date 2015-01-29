@@ -45,53 +45,55 @@ class MainHandler(webapp2.RequestHandler):
         output = []
         for row in cursor.fetchall():
             output.append(dict([('id', row[0]),
-                                ('name', cgi.escape(row[1]))
+                                ('name', cgi.escape(row[1])),
+                                ('ind_selected', row[2])
             ]))
+        self.response.content_type = 'text/json'
 
-        self.response.content_type = 'text/plain'
-
-        _object = {
-            'entry': 'entry',
-            'number': 12,
-            'sub': {
-                'sub1': 'subobject'
-            }
-
-        }
-
-        for i in _object:
-
-            # if value is an object, do extra for loop
-            if type(_object[i]) is dict:
-
-                for j in _object[i]:
-                    self.response.write(_object[i][j] + '\n')
-            else:
-                self.response.write(str(_object[i]) + '\n')
+        # _object = {
+        #     'entry': 'entry',
+        #     'number': 12,
+        #     'sub': {
+        #         'sub1': 'subobject'
+        #     }
+        #
+        # }
+        #
+        # for i in _object:
+        #
+        #     # if value is an object, do extra for loop
+        #     if type(_object[i]) is dict:
+        #
+        #         for j in _object[i]:
+        #             self.response.write(_object[i][j] + '\n')
+        #     else:
+        #         self.response.write(str(_object[i]) + '\n')
 
 
-        # self.response.write(output)
-        var = scopes.projects.Projects.test()
+        self.response.write(json.dumps(output))
+        # var = scopes.projects.Projects.test()
         # self.response.write(var)
         # other response stuff? https://webapp-improved.appspot.com/guide/response.html
 
     def post(self):
-        name = self.request.get('name')
-        logging.info('Inserting project named ' + name)
+        jsonstring = self.request.body
+        project = json.loads(jsonstring)
+        logging.info('Inserting project named ' + project['name'])
 
         db = getDb()
         cursor = db.cursor()
-        cursor.execute('INSERT INTO projects (name) VALUES (%s)', [name])
+        cursor.execute('INSERT INTO projects (name) VALUES (%s)', [project['name']])
         db.commit()
         db.close()
 
     def put(self):
-        key = int(self.request.get('id'))
-        name = self.request.get('name')
-        logging.info('Updating project id' + str(key))
+        jsonstring = self.request.body
+        project = json.loads(jsonstring)
+        self.response.write(project['id'])
+        logging.info('Updating project id' + project['id'])
         db = getDb()
         cursor = db.cursor()
-        cursor.execute('UPDATE projects SET name = (%s) WHERE id = (%s)', [name, key])
+        cursor.execute('UPDATE projects SET name = (%s) WHERE id = (%s)', [project['name'], project['id']])
         db.commit()
         db.close()
 
@@ -133,9 +135,31 @@ class Index(webapp2.RequestHandler):
         template = JINJA_ENVIRONMENT.get_template('index.html')
         self.response.write(template.render(template_values))
 
+class Form(webapp2.RequestHandler):
+    def get(self):
+        template_values = {}
+        template = JINJA_ENVIRONMENT.get_template('main.html')
+        self.response.write(template.render(template_values))
+
+class Templates_projects(webapp2.RequestHandler):
+    def get(self):
+        template_values = {}
+        template = JINJA_ENVIRONMENT.get_template('projects.html')
+        self.response.write(template.render(template_values))
+
+class Project_edit(webapp2.RequestHandler):
+    def get(self):
+        template_values = {}
+        template = JINJA_ENVIRONMENT.get_template('project_edit.html')
+        self.response.write(template.render(template_values))
+
+
 # webapp2: https://webapp-improved.appspot.com/index.html
 app = webapp2.WSGIApplication([
-                                  ('/', Index),
+                                  ('/', Form),
+                                  # ('/', Index),
+                                  ('/projects', Templates_projects),
+                                  ('/project_edit', Project_edit),
                                   ('/main', MainHandler),
                                   ('/newbase/(\d+)', Projects)
                               ], debug=True)

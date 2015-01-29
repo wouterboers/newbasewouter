@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html ng-app="app">
+<head>
+    <link href="/static/bootstrap.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/static/ripples.min.css">
+    <link rel="stylesheet" type="text/css" href="/static/material.min.css">
+    <link rel="stylesheet" type="text/css" href="/static/material-wfont.min.css">
+    <link rel="stylesheet" type="text/css" href="/static/snackbar.css">
+    <link rel="stylesheet" type="text/css" href="/static/main.css">
+</head>
+<!--<form ng-controller="UpdateProjectCtrl" class="form-horizontal" ng-submit="updateProject()">-->
+<!--<div class="modal">-->
+<!--<div class="modal-dialog">-->
+<!--<div class="modal-content" style="background-color: #ffffff">-->
+<!--<div class="modal-header">-->
+<!--<h4 class="modal-title">Edit project</h4>-->
+<!--</div>-->
+<!--<div class="modal-body">-->
+<!--<div class="form-control-wrapper">-->
+<!--<input ng-init="" ng-model="id" name="id"/>-->
+
+<!--<div class="col-lg-2 control-label">Name:</div>-->
+<!--<input ng-model="name" class="form-control empty" type="text" name="name"-->
+<!--style="width: 100%"/>-->
+<!--<span class="material-input"></span>-->
+<!--</div>-->
+<!--</div>-->
+<!--<div class="modal-footer">-->
+<!--<button ng-click="close()" type="button" class="btn btn-default" data-dismiss="modal">Close-->
+<!--</button>-->
+<!--<button type="submit" class="btn btn-primary">Save changes</button>-->
+<!--</div>-->
+<!--</div>-->
+<!--</div>-->
+<!--</div>-->
+<!--</form>-->
+<div class="form_wrapper wrapper">
+    <div class="well bs-component">
+        <form class="form-horizontal" ng-controller="InsertProjectCtrl" ng-submit="insertProject()">
+            <fieldset>
+                <legend>Enter new project details</legend>
+                <div class="form-group">
+                    <label for="inputEmail" class="col-lg-2 control-label">Email</label>
+
+                    <div class="col-lg-10">
+                        <div class="form-control-wrapper"><input type="email" class="form-control empty" id="inputEmail"
+                                                                 placeholder="Email"><span
+                                class="material-input"></span></div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputPassword" class="col-lg-2 control-label">Password</label>
+
+                    <div class="col-lg-10">
+                        <div class="form-control-wrapper"><input type="password" class="form-control empty"
+                                                                 id="inputPassword" placeholder="Password"><span
+                                class="material-input"></span></div>
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox"><span class="ripple"></span><span class="check"></span> Checkbox
+                            </label>
+                        </div>
+                        <br>
+
+                        <div class="togglebutton">
+                            <label>
+                                <input type="checkbox" checked=""><span class="toggle"></span> Toggle button
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputFile" class="col-lg-2 control-label">File</label>
+
+                    <div class="col-lg-10">
+                        <div class="form-control-wrapper fileinput"><input type="text" readonly=""
+                                                                           class="form-control empty"><input type="file"
+                                                                                                             id="inputFile"
+                                                                                                             multiple="">
+
+                            <div class="floating-label">Browse...</div>
+                            <span class="material-input"></span></div>
+
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="textArea" class="col-lg-2 control-label">Textarea</label>
+
+                    <div class="col-lg-10">
+                        <div class="form-control-wrapper"><textarea class="form-control empty" rows="3"
+                                                                    id="textArea"></textarea><span
+                                class="material-input"></span></div>
+                        <span class="help-block">A longer block of help text that breaks onto a new line and may extend beyond one line.</span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-lg-2 control-label">Radios</label>
+
+                    <div class="col-lg-10">
+                        <div class="radio radio-primary">
+                            <label>
+                                <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked=""><span
+                                    class="circle"></span><span class="check"></span>
+                                Option one is this
+                            </label>
+                        </div>
+                        <div class="radio radio-primary">
+                            <label>
+                                <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2"><span
+                                    class="circle"></span><span class="check"></span>
+                                Option two can be something else
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="select" class="col-lg-2 control-label">Selects</label>
+
+                    <div class="col-lg-10">
+                        <div class="form-control-wrapper"><select class="form-control" id="select">
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                        </select><span class="material-input"></span></div>
+                        <br>
+
+                        <div class="form-control-wrapper"><select multiple="" class="form-control empty">
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                        </select><span class="material-input"></span></div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-lg-10 col-lg-offset-2">
+                        <button class="btn btn-default">Cancel</button>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
+                </div>
+            </fieldset>
+        </form>
+        <div id="source-button" class="btn btn-primary btn-xs" style="display: none;">&lt; &gt;</div>
+    </div>
+</div>
+</body>
+</html>

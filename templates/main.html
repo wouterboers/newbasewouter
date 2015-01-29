@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html ng-app="app">
+<head>
+    <link href="/static/bootstrap.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/static/ripples.min.css">
+    <link rel="stylesheet" type="text/css" href="/static/material.min.css">
+    <link rel="stylesheet" type="text/css" href="/static/material-wfont.min.css">
+    <link rel="stylesheet" type="text/css" href="/static/snackbar.css">
+    <link rel="stylesheet" type="text/css" href="/static/main.css">
+    <script src="/static/js/angular.js"></script>
+    <script src="/static/js/angular_route.js"></script>
+    <script src="/static/js/jquery.js"></script>
+    <script src="/static/js/projects.js"></script>
+    <base href="/">
+</head>
+<body>
+<!--Menu icon to call menu-->
+<div ng-controller="MainMenu" ng-click="call_menu($event)" class="icon-preview menu_icon_hidden">
+    <i class="mdi-navigation-menu"></i>
+</div>
+
+<!--Main menu-->
+<div id="left_menu" class="panel panel-primary toggle_menu" ng-controller="MainMenu">
+    <div class="panel-heading">
+        <h3 class="panel-title">Panel primary</h3>
+
+        <div ng-click="hide_menu($event)" class="icon-preview menu_icon">
+            <i class="mdi-navigation-menu"></i>
+        </div>
+    </div>
+    <div class="panel-body menu">
+        Panel content<br/>
+        <a href="/project_edit">project edit</a>
+    </div>
+</div>
+<div ng-view class="ng_view_content"></div>
+</body>
+</html>
